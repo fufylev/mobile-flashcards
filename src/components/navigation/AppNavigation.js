@@ -24,7 +24,7 @@ function DeckStackScreen() {
             <DeckStack.Screen
                 name="Deck"
                 component={Deck}
-                // options={({ route }) => ({ title: route.params.name })}
+               options={({ route }) => ({ title: route.params.deck.title })}
             />
         </DeckStack.Navigator>
     );
@@ -65,8 +65,6 @@ const stackOptions = {
 };
 
 export default function AppNavigation() {
-    /*useEffect(() => {
-    }, []);*/
 
     return (
         <NavigationContainer>
