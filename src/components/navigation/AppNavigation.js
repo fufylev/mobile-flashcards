@@ -3,17 +3,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome } from '@expo/vector-icons';
-import { StatusBar } from "react-native";
+import { StatusBar } from 'react-native';
 
-import Colors from '../../constants/Colors'
-import IconWithBadge from "../IconWithBadge/IconWithBadge";
-import Decks from "../../containers/Decks/Decks";
-import Deck from "../../containers/Deck/Deck";
-import AddDeck from "../../containers/AddDeck/AddDeck";
-
+import Colors from '../../constants/Colors';
+import IconWithBadge from '../IconWithBadge/IconWithBadge';
+import Decks from '../../containers/Decks/Decks';
+import Deck from '../../containers/Deck/Deck';
+import AddDeck from '../../containers/AddDeck/AddDeck';
 
 function HomeIconWithBadge(props) {
-    return <IconWithBadge {...props} badgeCount={0}/>;
+    return <IconWithBadge {...props} badgeCount={0} />;
 }
 
 const DeckStack = createStackNavigator();
@@ -21,7 +20,7 @@ const DeckStack = createStackNavigator();
 function DeckStackScreen() {
     return (
         <DeckStack.Navigator>
-            <DeckStack.Screen name="Decks" component={Decks} options={stackOptions.decks}/>
+            <DeckStack.Screen name="Decks" component={Decks} options={stackOptions.decks} />
             <DeckStack.Screen
                 name="Deck"
                 component={Deck}
@@ -36,7 +35,7 @@ const AddDeckStack = createStackNavigator();
 function AddDeckStackScreen() {
     return (
         <AddDeckStack.Navigator>
-            <AddDeckStack.Screen name="AddDeck" component={AddDeck} options={stackOptions.addDeck}/>
+            <AddDeckStack.Screen name="AddDeck" component={AddDeck} options={stackOptions.addDeck} />
         </AddDeckStack.Navigator>
     );
 }
@@ -47,21 +46,21 @@ const defaultNavigationOptions = {
     headerStyle: {
         backgroundColor: Platform.OS === 'ios' ? 'white' : Colors.tintColor,
     },
-    headerTintColor: Platform.OS === 'ios' ?  Colors.tintColor : 'white',
+    headerTintColor: Platform.OS === 'ios' ? Colors.tintColor : 'white',
 };
 
 const stackOptions = {
     decks: {
         headerTitle: 'Dashboard',
-        ...defaultNavigationOptions
+        ...defaultNavigationOptions,
     },
     addDeck: {
         headerTitle: 'New Deck',
-        ...defaultNavigationOptions
+        ...defaultNavigationOptions,
     },
     deck: {
         headerTitle: 'Deck',
-        ...defaultNavigationOptions
+        ...defaultNavigationOptions,
     },
 };
 
@@ -73,8 +72,8 @@ export default function AppNavigation() {
         <NavigationContainer>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <Tab.Navigator
-                screenOptions={({route}) => ({
-                    tabBarIcon: ({focused, color, size = 30}) => {
+                screenOptions={({ route }) => ({
+                    tabBarIcon: ({ focused, color, size = 30 }) => {
                         if (route.name === 'Decks') {
                             return (
                                 <HomeIconWithBadge
@@ -85,11 +84,7 @@ export default function AppNavigation() {
                             );
                         } else if (route.name === 'Add Deck') {
                             return (
-                                <FontAwesome
-                                    name={focused ? 'plus-square' : 'plus-square-o'}
-                                    size={30}
-                                    color={color}
-                                />
+                                <FontAwesome name={focused ? 'plus-square' : 'plus-square-o'} size={30} color={color} />
                             );
                         }
                     },
@@ -109,8 +104,8 @@ export default function AppNavigation() {
                     },
                 }}
             >
-                <Tab.Screen name="Decks" component={DeckStackScreen}/>
-                <Tab.Screen name="Add Deck" component={AddDeckStackScreen}/>
+                <Tab.Screen name="Decks" component={DeckStackScreen} />
+                <Tab.Screen name="Add Deck" component={AddDeckStackScreen} />
             </Tab.Navigator>
         </NavigationContainer>
     );
