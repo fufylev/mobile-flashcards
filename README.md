@@ -25,7 +25,7 @@ bootom left coner by using your camera on "iOS" or directly from Expo App on "An
 Alternatively, you may use either an iOS or an Android simulators if you have them installed on your computer
 #
 #### Download Expo Client
-Use our iOS or Android app to directly view Expo projects on your phone\
-![Apple](https://github.com/fufylev/mobile-flashcards/raw/master/assets/img/iOS-Apple-icon.png)
+Use iOS or Android app to directly view Expo projects on your phone\
+
 [iOS App](https://itunes.apple.com/app/apple-store/id982107779)\
 [Android App](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www)
