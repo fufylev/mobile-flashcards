@@ -3,8 +3,10 @@ import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-nati
 import { Card } from 'react-native-paper';
 import { PADDING_HORIZONTAL } from '../../constants/dimensions';
 import AppTextBold from '../../components/custom/AppTextBold';
+import { useNavigation } from '@react-navigation/native';
 
 const DeckCard = ({ deck }) => {
+    const navigation = useNavigation();
     const [deviceWidth, setDeviceWidth] = useState(Dimensions.get('window').width - PADDING_HORIZONTAL * 2);
 
     useEffect(() => {
@@ -20,13 +22,13 @@ const DeckCard = ({ deck }) => {
         };
     });
 
-    const onOpen = (id) => {
-        
-    }
+    const onOpen = () => {
+        navigation.navigate('Deck', { deck });
+    };
 
     return (
         <View style={{ flex: 1, width: deviceWidth, marginBottom: 20 }}>
-            <TouchableOpacity onPress={() => onOpen(deck.id)}>
+            <TouchableOpacity onPress={() => onOpen(deck)}>
                 <Card style={styles.card}>
                     <View>
                         <AppTextBold style={styles.title}>{deck.title}</AppTextBold>
