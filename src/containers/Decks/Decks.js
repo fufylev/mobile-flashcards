@@ -1,20 +1,25 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, Text } from 'react-native';
-import { Card } from 'react-native-paper';
+import DecksList from './DecksList';
+import { PADDING_HORIZONTAL } from '../../constants/dimensions';
+
 
 const Decks = ({ navigation }) => {
+    const [decks, setDecks] = useState([]);
+    
     const allDecks = useSelector(state => state.deck.allDecks);
-    console.log(allDecks);
+
+    useEffect(() => {
+        setDecks(allDecks);
+    });
+
+    console.log(decks);
 
     return (
         <View style={styles.container}>
-            <Card style={styles.card}>
-              <View >
-                <Text>Decks</Text>
-              </View>
-            </Card>
+            <DecksList data={decks} style={styles.list}/>
         </View>
     );
 };
@@ -26,12 +31,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 8
+        padding: PADDING_HORIZONTAL,
     },
-    card: {
-      width: '100%',
-      padding: 20
+    list: {
+      flex:1,
+      width: '100%'
     }
+    
 });
 
 export default Decks;
