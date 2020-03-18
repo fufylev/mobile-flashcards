@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Alert } from 'react-native';
 import AppTextBold from '../../components/custom/AppTextBold';
 import AppButton from '../../components/custom/AppButton';
 import { PADDING_HORIZONTAL } from '../../constants/dimensions';
 import Colors from '../../constants/Colors';
+import { removeDeck } from '../../store/actions/decks';
 
 const Deck = ({ route, navigation }) => {
     const dispatch = useDispatch();
@@ -16,7 +17,29 @@ const Deck = ({ route, navigation }) => {
     };
 
     const onDeletePress = () => {
+        Alert.alert(
+            'Delete Deck',
+            `Are you sure? You cannot undo this action.`,
+            [
+                {
+                    text: 'Cancel',
+                    style: 'cancel',
+                },
+                {
+                    text: 'Delete',
+                    style: 'destructive',
+                    onPress: () => {
+                        dispatch(removeDeck(deck.id));
+                        navigation.navigate('Decks');
+                    },
+                },
+            ],
+            { cancelable: false },
+        );
+    };
 
+    if (!deckId || !deck) {
+        return null;
     }
 
     return (
@@ -37,7 +60,7 @@ const Deck = ({ route, navigation }) => {
                     </AppButton>
                 </View>
                 <View style={styles.btn}>
-                    <AppButton fontSize={26} color={Colors.deleteButton}>
+                    <AppButton fontSize={26} color={Colors.deleteButton} onPress={onDeletePress}>
                         Delete deck
                     </AppButton>
                 </View>

@@ -9,18 +9,28 @@ export const deckReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_DECKS:
             return {
+                ...state,
                 allDecks: action.payload,
             };
 
         case ADD_DECK:
             const newDeck = action.payload;
 
-            const allDecks = [...state.allDecks, newDeck];
-            setStorage(allDecks);
+            setStorage([...state.allDecks, newDeck]);
 
             return {
                 ...state,
-                allDecks,
+                allDecks: [...state.allDecks, newDeck],
+            };
+
+        case REMOVE_DECK:
+            const id = action.payload;
+
+            setStorage([...state.allDecks].filter(deck => deck.id !== id));
+
+            return {
+                ...state,
+                allDecks: [...state.allDecks].filter(deck => deck.id !== id),
             };
 
         default:
