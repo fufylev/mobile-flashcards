@@ -13,6 +13,6 @@ export default {
     noticeText: '#fff',
     createButton: '#483D8B',
     deleteButton: '#B22222',
-    quizButton: '#CD5C5C',
+    quizButton: '#000',
     headerTitle: '#191970',
 };

@@ -14,3 +14,10 @@ export const setDecksToStorage = decks => {
         payload: decks,
     };
 };
+
+export const removeDeck = (id) => {
+    return {
+        type: REMOVE_DECK,
+        payload: id,
+    };
+};
