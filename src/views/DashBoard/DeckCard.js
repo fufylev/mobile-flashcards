@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-paper';
 import { PADDING_HORIZONTAL } from '../../constants/dimensions';
-import AppTextBold from '../../components/custom/AppTextBold';
+import AppTextBold from '../../components/custom_ui/AppTextBold';
 import { useNavigation } from '@react-navigation/native';
 import Colors from '../../constants/Colors';
 

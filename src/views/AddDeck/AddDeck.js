@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { View, StyleSheet, Text, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import AppButton from '../../components/custom/AppButton';
+import AppButton from '../../components/custom_ui/AppButton';
 import { addDeck } from '../../store/actions/decks';
 import { generateID } from '../../utils/helpers';
 

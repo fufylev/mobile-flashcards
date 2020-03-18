@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, StyleSheet, Text, Alert } from 'react-native';
-import AppTextBold from '../../components/custom/AppTextBold';
-import AppButton from '../../components/custom/AppButton';
+import AppTextBold from '../../components/custom_ui/AppTextBold';
+import AppButton from '../../components/custom_ui/AppButton';
 import { PADDING_HORIZONTAL } from '../../constants/dimensions';
 import Colors from '../../constants/Colors';
 import { removeDeck } from '../../store/actions/decks';

@@ -4,9 +4,8 @@ import { View, StyleSheet, AsyncStorage } from 'react-native';
 import DecksList from './DecksList';
 import { PADDING_HORIZONTAL } from '../../constants/dimensions';
 import { setDecksToStorage } from '../../store/actions/decks';
-import { clearStorage } from '../../utils/helpers';
 
-const Decks = ({ navigation }) => {
+const DashBoard = () => {
     const dispatch = useDispatch();
     const [allDecks, setAllDecks] = useState([]);
 
@@ -60,4 +59,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Decks;
+export default DashBoard;

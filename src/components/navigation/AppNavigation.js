@@ -6,11 +6,11 @@ import { FontAwesome } from '@expo/vector-icons';
 import { StatusBar } from 'react-native';
 
 import Colors from '../../constants/Colors';
-import IconWithBadge from '../IconWithBadge/IconWithBadge';
-import Decks from '../../containers/Decks/Decks';
-import Deck from '../../containers/Deck/Deck';
-import AddCard from '../../containers/Deck/AddCard';
-import AddDeck from '../../containers/AddDeck/AddDeck';
+import IconWithBadge from '../custom_ui/IconWithBadge';
+import DashBoard from '../../views/DashBoard/DashBoard';
+import Deck from '../../views/Deck/Deck';
+import AddCard from '../../views/AddCard/AddCard';
+import AddDeck from '../../views/AddDeck/AddDeck';
 
 function HomeIconWithBadge(props) {
     return <IconWithBadge {...props} badgeCount={0} />;
@@ -21,7 +21,7 @@ const DeckStack = createStackNavigator();
 function DeckStackScreen() {
     return (
         <DeckStack.Navigator>
-            <DeckStack.Screen name="Decks" component={Decks} options={stackOptions.decks} />
+            <DeckStack.Screen name="Decks" component={DashBoard} options={stackOptions.decks} />
             <DeckStack.Screen
                 name="Deck"
                 component={Deck}
