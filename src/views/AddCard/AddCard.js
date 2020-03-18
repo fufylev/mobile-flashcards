@@ -9,7 +9,7 @@ const AddCard = () => {
             </Text>
         </View>
     )
-}
+};
 
 export default AddCard
 

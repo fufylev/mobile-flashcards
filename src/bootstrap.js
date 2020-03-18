@@ -1,9 +1,6 @@
 import * as Font from 'expo-font';
 
-
-
 export async function bootstrap() {
-    
     try {
         await Font.loadAsync({
             'open-bold': require('../assets/fonts/OpenSans-Bold.ttf'),
