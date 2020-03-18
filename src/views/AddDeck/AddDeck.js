@@ -5,20 +5,16 @@ import AppButton from '../../components/custom_ui/AppButton';
 import { addDeck } from '../../store/actions/decks';
 import { generateID } from '../../utils/helpers';
 
-const AddDeck = ({navigation}) => {
+const AddDeck = ({ navigation }) => {
     const [value, onChangeText] = React.useState('');
     const dispatch = useDispatch();
 
     const onPressHandler = () => {
-
         if (value.length === 0) {
-            Alert.alert(
-                'Oooops!',
-                'Empty title is not allowed',
-                [{text: 'OK', onPress: () => null}],
-                {cancelable: false}
-            );
-            return
+            Alert.alert('Oooops!', 'Empty title is not allowed', [{ text: 'OK', onPress: () => null }], {
+                cancelable: false,
+            });
+            return;
         }
 
         const deck = {
@@ -29,7 +25,7 @@ const AddDeck = ({navigation}) => {
 
         dispatch(addDeck(deck));
         onChangeText('');
-        navigation.navigate('Deck', {deckId: deck.id, deckTitle: deck.title});
+        navigation.navigate('Deck', { deckId: deck.id, deckTitle: deck.title });
     };
 
     return (

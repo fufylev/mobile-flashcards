@@ -16,7 +16,7 @@ const Deck = ({ route, navigation }) => {
         navigation.navigate('Add card', {
             title: `New card`,
             deckId: deck.id,
-            deckTitle: deck.title
+            deckTitle: deck.title,
         });
     };
 

@@ -7,10 +7,10 @@ export const addDeck = deck => {
     };
 };
 
-export const addCardToDeck = ({card, deckId}) => {
+export const addCardToDeck = ({ card, deckId }) => {
     return {
         type: ADD_CARD_TO_DECK,
-        payload: {card, deckId},
+        payload: { card, deckId },
     };
 };
 
@@ -22,7 +22,7 @@ export const setDecksToStorage = decks => {
     };
 };
 
-export const removeDeck = (id) => {
+export const removeDeck = id => {
     return {
         type: REMOVE_DECK,
         payload: id,

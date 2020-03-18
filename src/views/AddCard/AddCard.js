@@ -1,42 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Alert, Keyboard, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
 import AppButton from '../../components/custom_ui/AppButton';
 import { generateID } from '../../utils/helpers';
-import { addCardToDeck } from "../../store/actions/decks";
+import { addCardToDeck } from '../../store/actions/decks';
 
-const AddCard = ({navigation, route}) => {
+const AddCard = ({ navigation, route }) => {
     const dispatch = useDispatch();
-    const {deckTitle, deckId} = route.params;
+    const { deckTitle, deckId } = route.params;
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
 
     const onPressHandler = () => {
         if (question.length === 0 || answer.length === 0) {
-            Alert.alert(
-                'Oooops!',
-                'Both fields are required',
-                [{text: 'OK', onPress: () => null}],
-                {cancelable: false}
-            );
-            return
+            Alert.alert('Oooops!', 'Both fields are required', [{ text: 'OK', onPress: () => null }], {
+                cancelable: false,
+            });
+            return;
         }
 
         const card = {
             id: generateID(),
             question,
-            answer
+            answer,
         };
 
-        dispatch(addCardToDeck({card, deckId}));
+        dispatch(addCardToDeck({ card, deckId }));
         setQuestion('');
         setAnswer('');
-        navigation.navigate('Deck', {deckId, deckTitle});
+        navigation.navigate('Deck', { deckId, deckTitle });
     };
 
     return (
         <ScrollView>
-
             <View style={styles.container}>
                 <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                     <View style={styles.top}>
@@ -50,7 +46,7 @@ const AddCard = ({navigation, route}) => {
                             onChangeText={text => setQuestion(text)}
                             value={question}
                             maxLength={250}
-                            placeholder='Question'
+                            placeholder="Question"
                         />
                         <TextInput
                             multiline
@@ -60,7 +56,7 @@ const AddCard = ({navigation, route}) => {
                             onChangeText={text => setAnswer(text)}
                             value={answer}
                             maxLength={250}
-                            placeholder='Answer'
+                            placeholder="Answer"
                         />
                     </View>
                 </TouchableWithoutFeedback>
@@ -70,13 +66,11 @@ const AddCard = ({navigation, route}) => {
                     </AppButton>
                 </View>
             </View>
-
         </ScrollView>
-
-    )
+    );
 };
 
-export default AddCard
+export default AddCard;
 
 const styles = StyleSheet.create({
     container: {
@@ -101,7 +95,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: '#fff',
         fontSize: 16,
-        marginVertical: 20
+        marginVertical: 20,
     },
     btn: {
         marginTop: 50,

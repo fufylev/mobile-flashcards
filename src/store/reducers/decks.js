@@ -34,7 +34,7 @@ export const deckReducer = (state = initialState, action) => {
             };
 
         case ADD_CARD_TO_DECK:
-            const {card, deckId} = action.payload;
+            const { card, deckId } = action.payload;
 
             const data = state.allDecks.map(deck => {
                 if (deck.id === deckId) {
