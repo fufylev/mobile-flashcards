@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { View, StyleSheet, Text, TextInput } from 'react-native';
+import { View, StyleSheet, Text, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import AppButton from '../../components/custom/AppButton';
 import { addDeck } from '../../store/actions/decks';
 import { generateID } from '../../utils/helpers';
@@ -13,30 +13,35 @@ const AddDeck = ({ navigation }) => {
         const deck = {
             id: generateID(),
             title: value,
+            cards: [],
         };
 
         dispatch(addDeck(deck));
         onChangeText('');
-        navigation.navigate('Decks');
+        navigation.navigate('Deck', { deckId: deck.id, deckTitle: deck.title });
     };
 
     return (
-        <View style={styles.container}>
-            <View style={styles.top}>
-                <Text style={styles.text}>Add the title of your new deck</Text>
-                <TextInput
-                    autoCorrect={false}
-                    autoCapitalize="sentences"
-                    style={styles.input}
-                    onChangeText={text => onChangeText(text)}
-                    value={value}
-                    maxLength={40}
-                />
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View style={styles.container}>
+                <View style={styles.top}>
+                    <Text style={styles.text}>Add the title of your new deck</Text>
+                    <TextInput
+                        autoCorrect={false}
+                        autoCapitalize="sentences"
+                        style={styles.input}
+                        onChangeText={text => onChangeText(text)}
+                        value={value}
+                        maxLength={40}
+                    />
+                </View>
+                <View style={styles.btn}>
+                    <AppButton onPress={onPressHandler} fontSize={25}>
+                        Create Deck
+                    </AppButton>
+                </View>
             </View>
-            <AppButton onPress={onPressHandler} fontSize={25}>
-                Create Deck
-            </AppButton>
-        </View>
+        </TouchableWithoutFeedback>
     );
 };
 
@@ -65,7 +70,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     btn: {
-        fontSize: 30,
+        marginBottom: 30,
     },
 });
 

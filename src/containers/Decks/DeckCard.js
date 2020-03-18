@@ -4,6 +4,7 @@ import { Card } from 'react-native-paper';
 import { PADDING_HORIZONTAL } from '../../constants/dimensions';
 import AppTextBold from '../../components/custom/AppTextBold';
 import { useNavigation } from '@react-navigation/native';
+import Colors from '../../constants/Colors';
 
 const DeckCard = ({ deck }) => {
     const navigation = useNavigation();
@@ -23,15 +24,16 @@ const DeckCard = ({ deck }) => {
     });
 
     const onOpen = () => {
-        navigation.navigate('Deck', { deck });
+        navigation.navigate('Deck', { deckId: deck.id, deckTitle: deck.title });
     };
 
     return (
         <View style={{ flex: 1, width: deviceWidth, marginBottom: 20 }}>
-            <TouchableOpacity onPress={() => onOpen(deck)}>
+            <TouchableOpacity onPress={() => onOpen()}>
                 <Card style={styles.card}>
                     <View>
                         <AppTextBold style={styles.title}>{deck.title}</AppTextBold>
+                        <Text>Cards - {deck.cards.length}</Text>
                     </View>
                 </Card>
             </TouchableOpacity>
@@ -53,5 +55,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 20,
+        paddingBottom: 15,
+        color: Colors.tintColor
     },
 });

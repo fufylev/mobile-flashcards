@@ -1,4 +1,4 @@
-const tintColor = '#2f95dc';
+const tintColor = '#191970';
 
 export default {
     tintColor,
@@ -11,4 +11,8 @@ export default {
     warningText: '#666804',
     noticeBackground: tintColor,
     noticeText: '#fff',
+    createButton: '#483D8B',
+    deleteButton: '#B22222',
+    quizButton: '#CD5C5C',
+    headerTitle: '#191970',
 };

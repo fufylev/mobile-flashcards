@@ -9,6 +9,7 @@ import Colors from '../../constants/Colors';
 import IconWithBadge from '../IconWithBadge/IconWithBadge';
 import Decks from '../../containers/Decks/Decks';
 import Deck from '../../containers/Deck/Deck';
+import AddCard from '../../containers/Deck/AddCard';
 import AddDeck from '../../containers/AddDeck/AddDeck';
 
 function HomeIconWithBadge(props) {
@@ -24,7 +25,12 @@ function DeckStackScreen() {
             <DeckStack.Screen
                 name="Deck"
                 component={Deck}
-               options={({ route }) => ({ title: route.params.deck.title })}
+                options={({ route }) => ({ ...stackOptions.deck, title: route.params.deckTitle })}
+            />
+            <DeckStack.Screen
+                name="Add card"
+                component={AddCard}
+                options={({ route }) => ({ ...stackOptions.deck, title: route.params.title })}
             />
         </DeckStack.Navigator>
     );
@@ -44,9 +50,9 @@ const Tab = createBottomTabNavigator();
 
 const defaultNavigationOptions = {
     headerStyle: {
-        backgroundColor: Platform.OS === 'ios' ? 'white' : Colors.tintColor,
+        backgroundColor: Platform.OS === 'ios' ? 'white' : Colors.headerTitle,
     },
-    headerTintColor: Platform.OS === 'ios' ? Colors.tintColor : 'white',
+    headerTintColor: Platform.OS === 'ios' ? Colors.headerTitle : 'white',
 };
 
 const stackOptions = {
@@ -59,13 +65,11 @@ const stackOptions = {
         ...defaultNavigationOptions,
     },
     deck: {
-        headerTitle: 'Deck',
         ...defaultNavigationOptions,
     },
 };
 
 export default function AppNavigation() {
-
     return (
         <NavigationContainer>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
@@ -91,7 +95,7 @@ export default function AppNavigation() {
                     activeTintColor: Platform.OS === 'ios' ? Colors.tabIconSelected : 'white',
                     inactiveTintColor: Colors.tabIconDefault,
                     style: {
-                        backgroundColor: Platform.OS === 'ios' ? 'white' : Colors.tintColor,
+                        backgroundColor: Platform.OS === 'ios' ? 'white' : Colors.headerTitle,
                         shadowColor: 'rgba(0, 0, 0, 0.24)',
                         shadowOffset: {
                             width: 0,
