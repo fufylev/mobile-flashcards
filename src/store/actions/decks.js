@@ -1,9 +1,16 @@
-import { ADD_DECK, SET_DECKS, REMOVE_DECK } from '../types';
+import { ADD_DECK, SET_DECKS, REMOVE_DECK, ADD_CARD_TO_DECK } from '../types';
 
 export const addDeck = deck => {
     return {
         type: ADD_DECK,
         payload: deck,
+    };
+};
+
+export const addCardToDeck = ({card, deckId}) => {
+    return {
+        type: ADD_CARD_TO_DECK,
+        payload: {card, deckId},
     };
 };
 

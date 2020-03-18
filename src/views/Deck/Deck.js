@@ -13,7 +13,11 @@ const Deck = ({ route, navigation }) => {
     const deck = useSelector(state => state.deck.allDecks.find(el => el.id === deckId));
 
     const onAddPress = () => {
-        navigation.navigate('Add card', { title: `New card for ${deck.title}`, deckId: deck.id });
+        navigation.navigate('Add card', {
+            title: `New card`,
+            deckId: deck.id,
+            deckTitle: deck.title
+        });
     };
 
     const onDeletePress = () => {
@@ -51,17 +55,17 @@ const Deck = ({ route, navigation }) => {
             <View>
                 <View style={styles.btn}>
                     <AppButton fontSize={26} color={Colors.createButton} onPress={onAddPress}>
-                        Add Card
+                        Add New Card
                     </AppButton>
                 </View>
                 <View style={styles.btn}>
                     <AppButton fontSize={26} color={Colors.quizButton}>
-                        Quiz
+                        Start Quiz
                     </AppButton>
                 </View>
                 <View style={styles.btn}>
                     <AppButton fontSize={26} color={Colors.deleteButton} onPress={onDeletePress}>
-                        Delete deck
+                        Delete Deck
                     </AppButton>
                 </View>
             </View>

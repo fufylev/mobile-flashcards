@@ -1,15 +1,26 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { View, StyleSheet, Text, TextInput, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { Keyboard, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View, Alert } from 'react-native';
 import AppButton from '../../components/custom_ui/AppButton';
 import { addDeck } from '../../store/actions/decks';
 import { generateID } from '../../utils/helpers';
 
-const AddDeck = ({ navigation }) => {
+const AddDeck = ({navigation}) => {
     const [value, onChangeText] = React.useState('');
     const dispatch = useDispatch();
 
     const onPressHandler = () => {
+
+        if (value.length === 0) {
+            Alert.alert(
+                'Oooops!',
+                'Empty title is not allowed',
+                [{text: 'OK', onPress: () => null}],
+                {cancelable: false}
+            );
+            return
+        }
+
         const deck = {
             id: generateID(),
             title: value,
@@ -18,7 +29,7 @@ const AddDeck = ({ navigation }) => {
 
         dispatch(addDeck(deck));
         onChangeText('');
-        navigation.navigate('Deck', { deckId: deck.id, deckTitle: deck.title });
+        navigation.navigate('Deck', {deckId: deck.id, deckTitle: deck.title});
     };
 
     return (
