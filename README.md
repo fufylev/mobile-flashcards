@@ -2,6 +2,7 @@
 A mobile application (Android or iOS - or both) that allows users to study collections of flashcards. 
 The app will allow users to create different categories of flashcards called "decks", add flashcards to those decks, then take quizzes on those decks.
 
+Both iOS and Android platforms were tested. 
 ##
 ### Installation
 Clone this [repository](https://github.com/fufylev/react_native_self_posts)
