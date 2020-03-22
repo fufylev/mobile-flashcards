@@ -11,6 +11,7 @@ import DashBoard from '../../views/DashBoard/DashBoard';
 import Deck from '../../views/Deck/Deck';
 import AddCard from '../../views/AddCard/AddCard';
 import AddDeck from '../../views/AddDeck/AddDeck';
+import Quiz from "../../views/Quiz/Quiz";
 
 function HomeIconWithBadge(props) {
     return <IconWithBadge {...props} badgeCount={0} />;
@@ -30,6 +31,11 @@ function DeckStackScreen() {
             <DeckStack.Screen
                 name="Add card"
                 component={AddCard}
+                options={({ route }) => ({ ...stackOptions.deck, title: route.params.title })}
+            />
+            <DeckStack.Screen
+                name="Start Quiz"
+                component={Quiz}
                 options={({ route }) => ({ ...stackOptions.deck, title: route.params.title })}
             />
         </DeckStack.Navigator>
