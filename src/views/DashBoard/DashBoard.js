@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { View, StyleSheet, AsyncStorage } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AsyncStorage, StyleSheet, View } from 'react-native';
 import DecksList from './DecksList';
 import { PADDING_HORIZONTAL } from '../../constants/dimensions';
 import { setDecksToStorage } from '../../store/actions/decks';
+import { clearStorage, exampleDeck } from '../../utils/helpers';
 
 const DashBoard = () => {
     const dispatch = useDispatch();
@@ -19,8 +20,8 @@ const DashBoard = () => {
                     dispatch(setDecksToStorage(data));
                 }
             } else {
-                const decks = [];
-                await AsyncStorage.setItem('decks', JSON.stringify(decks));
+                await AsyncStorage.setItem('decks', JSON.stringify(exampleDeck));
+                dispatch(setDecksToStorage(exampleDeck));
             }
         } catch (e) {
             console.log(e);
@@ -28,7 +29,7 @@ const DashBoard = () => {
     };
 
     useEffect(() => {
-        // clearStorage();
+        //clearStorage();
         getStorage();
     }, []);
 
@@ -41,7 +42,7 @@ const DashBoard = () => {
 
     return (
         <View style={styles.container}>
-            <DecksList data={allDecks} style={styles.list} />
+            <DecksList data={allDecks} style={styles.list}/>
         </View>
     );
 };

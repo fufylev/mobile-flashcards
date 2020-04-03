@@ -4,10 +4,10 @@
     "slug": "mobile-flashcards",
     "privacy": "public",
     "sdkVersion": "36.0.0",
+    "description": "A mobile application that allows users to study collections of flashcards. The app will allow users to create different categories of flashcards called \"decks\", add flashcards to those decks, then take quizzes on those decks.",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,7 +24,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.fufylevdev.mobile-flashcards",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.fufylevdev.mobile_flashcards",
+      "versionCode": 1,
+      "permissions": [
+        "NOTIFICATIONS"
+      ]
     }
   }
 }

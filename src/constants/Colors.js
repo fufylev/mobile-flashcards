@@ -15,4 +15,6 @@ export default {
     deleteButton: '#B22222',
     quizButton: '#000',
     headerTitle: '#191970',
+    correct: '#1d7f31',
+    incorrect: '#B22222',
 };

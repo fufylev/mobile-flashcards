@@ -1,15 +1,15 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { View, StyleSheet, Text, Alert } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { Alert, StyleSheet, Text, View } from 'react-native';
 import AppTextBold from '../../components/custom_ui/AppTextBold';
 import AppButton from '../../components/custom_ui/AppButton';
 import { PADDING_HORIZONTAL } from '../../constants/dimensions';
 import Colors from '../../constants/Colors';
 import { removeDeck } from '../../store/actions/decks';
 
-const Deck = ({ route, navigation }) => {
+const Deck = ({route, navigation}) => {
     const dispatch = useDispatch();
-    const { deckId } = route.params;
+    const {deckId} = route.params;
     const deck = useSelector(state => state.deck.allDecks.find(el => el.id === deckId));
 
     const onAddPress = () => {
@@ -38,8 +38,15 @@ const Deck = ({ route, navigation }) => {
                     },
                 },
             ],
-            { cancelable: false },
+            {cancelable: false},
         );
+    };
+
+    const onQuizPress = () => {
+        navigation.navigate('Start Quiz', {
+            title: `Quiz`,
+            deckId: deck.id,
+        })
     };
 
     if (!deckId || !deck) {
@@ -58,11 +65,11 @@ const Deck = ({ route, navigation }) => {
                         Add New Card
                     </AppButton>
                 </View>
-                <View style={styles.btn}>
-                    <AppButton fontSize={26} color={Colors.quizButton}>
+                {deck.cards.length > 0 && <View style={styles.btn}>
+                    <AppButton fontSize={26} color={Colors.quizButton} onPress={onQuizPress}>
                         Start Quiz
                     </AppButton>
-                </View>
+                </View>}
                 <View style={styles.btn}>
                     <AppButton fontSize={26} color={Colors.deleteButton} onPress={onDeletePress}>
                         Delete Deck

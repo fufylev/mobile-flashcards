@@ -15,7 +15,6 @@ export const addCardToDeck = ({ card, deckId }) => {
 };
 
 export const setDecksToStorage = decks => {
-    console.log('Отработала функция записи в хранилище');
     return {
         type: SET_DECKS,
         payload: decks,
